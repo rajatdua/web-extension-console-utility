@@ -2,7 +2,8 @@
   "name": "Console Utility",
   "options_page": "options.html",
   "background": {
-    "page": "background.html"
+    "page": "background.html",
+    "persistent": true
   },
   "browser_action": {
     "default_popup": "popup.html",
@@ -15,12 +16,16 @@
     "matches": ["http://*/*", "https://*/*", "<all_urls>"],
     "js": ["contentScript.bundle.js"],
     "css": ["content.styles.css"],
-    "run_at": "document_start"
+    "run_at": "document_end"
   }],
   "web_accessible_resources": [
     "content.styles.css",
+    "main.bundle.js",
     "icon-128.png",
     "icon-34.png"
+  ],
+  "permission": [
+    "webRequest", "*://*/*", "webRequestBlocking"
   ],
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

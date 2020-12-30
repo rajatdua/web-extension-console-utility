@@ -16,3 +16,16 @@ window.onload = ()=>{
 	console.log(window.document.querySelector('#extInject'))
 	ReactDOM.render(<div>UwU</div>, window.document.querySelector('#extInject'));
 }
+
+console.log('Content script works!');
+printLine("Using the 'printLine' function from the Print Module");
+
+const s = document.createElement('script');
+s.src = chrome.runtime.getURL('main.bundle.js');
+s.onload = function() {
+  this.remove();
+};
+(document.head || document.documentElement).appendChild(s);
+
+
+printLine("End!");
