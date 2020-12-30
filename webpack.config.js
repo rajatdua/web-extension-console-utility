@@ -41,6 +41,7 @@ var options = {
     popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),
     background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
+    main: path.join(__dirname, 'src', 'pages', 'main.js'),
   },
   chromeExtensionBoilerplate: {
     notHotReload: ['contentScript'],
@@ -137,6 +138,15 @@ var options = {
       patterns: [
         {
           from: 'src/pages/Content/content.styles.css',
+          to: path.join(__dirname, 'build'),
+          force: true,
+        },
+      ],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/sw/serviceWorker.js',
           to: path.join(__dirname, 'build'),
           force: true,
         },

@@ -2,12 +2,13 @@ import { printLine } from './modules/print';
 
 console.log('Content script works!');
 printLine("Using the 'printLine' function from the Print Module");
-(function () {
-  var log = console.log;
-  console.log = function () {
-    log.call(this, 'My Console!!!', ...arguments);
-  };
-}());
-navigator.serviceWorker.register('../sw/serviceWorker.js').then(x=>console.log('done', x));
+
+const s = document.createElement('script');
+s.src = chrome.runtime.getURL('main.bundle.js');
+s.onload = function() {
+  this.remove();
+};
+(document.head || document.documentElement).appendChild(s);
+
 
 printLine("End!");
