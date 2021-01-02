@@ -1,5 +1,5 @@
 import Container from './Container';
-import { generateRandomId } from '../../utils';
+import { generateRandomId } from '../utils';
 
 interface Options {
   type: string,

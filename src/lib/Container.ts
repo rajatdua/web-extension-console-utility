@@ -1,4 +1,4 @@
-import { generateRandomId } from '../../utils';
+import { generateRandomId } from '../utils';
 
 export default class Container {
   active: boolean;
