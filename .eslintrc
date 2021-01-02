@@ -1,4 +1,5 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": "react-app",
   "globals": {
     "chrome": "readonly"

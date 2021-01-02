@@ -1,25 +1,17 @@
-import { printLine } from './modules/print'
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Injected(props){
-	render(
-		<div>UwU</div>
-	)
-} 
+function Injected(){
+	return <div>UwU</div>
+}
 
-window.onload = ()=>{
+window.onload = () => {
 	let container = document.createElement('div');
 	container.setAttribute("id", "extInject");
 	container.style.position = "absolute";
-	window.document.body.appendChild(container)
-
-	console.log(window.document.querySelector('#extInject'))
-	ReactDOM.render(<div>UwU</div>, window.document.querySelector('#extInject'));
-}
-
-console.log('Content script works!');
-printLine("Using the 'printLine' function from the Print Module");
+	window.document.body.appendChild(container);
+	ReactDOM.render(<Injected/>, window.document.querySelector('#extInject'));
+};
 
 const s = document.createElement('script');
 s.src = chrome.runtime.getURL('main.bundle.js');
@@ -28,5 +20,3 @@ s.onload = function() {
 };
 (document.head || document.documentElement).appendChild(s);
 
-
-printLine("End!");
