@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from '../lib/App';
+import App from '../../lib/App';
 
 window.onload = () => {
 	let container = document.createElement('div');
