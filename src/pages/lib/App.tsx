@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PubSub } from '../../utils/PubSub';
+import PubSub from '../../utils/PubSub';
 
 type AppState = {
   logs: Array<React.ReactNode>;

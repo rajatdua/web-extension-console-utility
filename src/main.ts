@@ -1,5 +1,5 @@
 import Toast from './lib/Toast';
-import { PubSub } from '../utils/PubSub'
+import PubSub from './utils/PubSub'
 
 const toastInstance = new Toast();
 toastInstance.setActive(true); // toggle option - container is initially false we need to make it true
@@ -8,7 +8,7 @@ var console = (function(oldConsole):any{
 	return({
 		...oldConsole,
 		log: function(...message: any[]): void{
-			PubSub.publish('CONSOLE', {type: 'LOG', args: message})
+			PubSub.publish('CONSOLE', {type: 'LOG', args: message});
 			oldConsole.log('Pepela: ', ...message);
 		},
 		// info: function(...message: any[]): void{
