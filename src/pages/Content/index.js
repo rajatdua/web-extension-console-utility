@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Injected(){
-	return <div>UwU</div>
-}
+import App from '../lib/App';
 
 window.onload = () => {
 	let container = document.createElement('div');
 	container.setAttribute("id", "extInject");
 	container.style.position = "absolute";
 	window.document.body.appendChild(container);
-	ReactDOM.render(<Injected/>, window.document.querySelector('#extInject'));
+	ReactDOM.render(<App/>, window.document.querySelector('#extInject'));
 };
 
 const s = document.createElement('script');

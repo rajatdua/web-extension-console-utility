@@ -3,5 +3,5 @@ export const generateRandomId = () => {
 };
 
 export default {
-  generateRandomId
+  generateRandomId,
 }

@@ -36,10 +36,10 @@ if (fileSystem.existsSync(secretsPath)) {
 var options = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    options: path.join(__dirname, 'src', 'pages', 'Options', 'index.tsx'),
-    popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),
-    background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
-    contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
+    options: path.join(__dirname, 'src', 'pages', 'options', 'index.tsx'),
+    popup: path.join(__dirname, 'src', 'pages', 'popup', 'index.jsx'),
+    background: path.join(__dirname, 'src', 'pages', 'background', 'index.js'),
+    contentScript: path.join(__dirname, 'src', 'pages', 'content', 'index.js'),
     main: path.join(__dirname, 'src', 'pages', 'main.ts'),
   },
   chromeExtensionBoilerplate: {
@@ -136,7 +136,7 @@ var options = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/pages/Content/content.styles.css',
+          from: 'src/pages/content/content.styles.css',
           to: path.join(__dirname, 'build'),
           force: true,
         },
@@ -152,13 +152,13 @@ var options = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'pages', 'Options', 'index.html'),
+      template: path.join(__dirname, 'src', 'pages', 'options', 'index.html'),
       filename: 'options.html',
       chunks: ['options'],
       cache: false,
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'pages', 'Popup', 'index.html'),
+      template: path.join(__dirname, 'src', 'pages', 'popup', 'index.html'),
       filename: 'popup.html',
       chunks: ['popup'],
       cache: false,
@@ -168,7 +168,7 @@ var options = {
         __dirname,
         'src',
         'pages',
-        'Background',
+        'background',
         'index.html'
       ),
       filename: 'background.html',
