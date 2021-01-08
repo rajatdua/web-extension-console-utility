@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import PubSub from '../utils/PubSub';
 
+type AppProps = {
+  pubsub: any
+}
 type AppState = {
   logs: Array<React.ReactNode>;
 };
@@ -10,7 +12,7 @@ interface MyConsole {
   args: Array<any>;
 }
 
-export default class App extends Component<{}, AppState> {
+export default class App extends Component<AppProps, AppState> {
   constructor(props: any){
     super(props)
     this.state={
@@ -20,12 +22,13 @@ export default class App extends Component<{}, AppState> {
 
   createComponent(data: MyConsole){
     return(
-      <div>{data.type}</div>
+      <div>{JSON.stringify(data.args)}</div>
     )
   }
 
   consoleHandler(data: MyConsole) {
-    console.log({data})
+    // @ts-ignore
+    console.myLog({data})
     const newComponent = this.createComponent(data);
     this.setState((prevState) => ({
       logs: [...prevState.logs, newComponent],
@@ -34,7 +37,7 @@ export default class App extends Component<{}, AppState> {
 
   componentDidMount() {
     console.log('Mounted')
-    PubSub.subscribe('CONSOLE', (data: MyConsole) =>
+    this.props.pubsub.subscribe('CONSOLE', (data: MyConsole) =>
       this.consoleHandler(data)
     );
   }
